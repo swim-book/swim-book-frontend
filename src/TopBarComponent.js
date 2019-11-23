@@ -14,7 +14,7 @@ class TopBarComponent extends React.Component {
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light nav-background">
-                    <a className="navbar-brand" href="#" style={{ "margin-left": "350px" }}>
+                    <a className="navbar-brand" href="/" style={{ "margin-left": "350px" }}>
                         <img src={logo} height="30" className="d-inline-block align-top" />
                         <span className="m-2">Swim books</span>
                     </a>

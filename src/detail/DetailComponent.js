@@ -17,7 +17,7 @@ class DetailComponent extends React.Component {
             <div>
                 <TopBarComponent />
                 <div className="card p-0">
-                    <video autoPlay className="container-fluid p-0" style={{ height: "650px", objectFit: "cover" }}>
+                    <video autoPlay loop className="container-fluid p-0" style={{ height: "650px", objectFit: "cover" }}>
                         <source src={lesson}></source>
                     </video>
                     <div className="card-img-overlay" style={{ backgroundColor: "#000000", opacity: "0.3" }}>
