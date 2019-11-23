@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import logo from '../resource/logo.png';
+
 const propTypes = {
 }
 
@@ -36,13 +38,13 @@ class SearchComponent extends React.Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#">
-                        <img src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" width="30" height="30" className="d-inline-block align-top" />
+                <nav className="navbar navbar-expand-lg navbar-light nav-background">
+                    <a className="navbar-brand" href="#" style={{"margin-left":"350px"}}>
+                        <img src={logo} height="30" className="d-inline-block align-top" />
                         <span className="m-2">Swim books</span>
                     </a>
                     <div className="ml-auto"></div>
-                    <div className="h-100">
+                    <div className="h-100" style={{"margin-right":"350px"}}>
                         <div className="navbar-nav">
                             <a className="nav-item nav-link active pl-3 pr-3" href="#">회원가입</a>
                             <a className="nav-item nav-link active pl-3 pr-3" href="#">로그인</a>
