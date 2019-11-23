@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'RidiBatang';
+    src: url('https://www.ridicorp.com/assets/fonts/RIDIBatang.woff');
+}
+* {
+    font-size: 100%;
+    font-family: RidiBatang;
+}
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.checked {
+    color: orange;
+}

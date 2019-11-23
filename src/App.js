@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import LandingComponent from './landing/LandingComponent';
+
 const propTypes = {
 }
 
@@ -13,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Hello World!
+        <LandingComponent />
       </div>
     );
   }
