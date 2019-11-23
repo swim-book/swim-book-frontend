@@ -19,7 +19,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Router>
+        <Router basename="/swim-book-frontend">
           <Route exact path="/" component={LandingComponent}/>
           <Route path="/search" component={SearchComponent}/>
           <Route path="/detail" component={DetailComponent}/>
