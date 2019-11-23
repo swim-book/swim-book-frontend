@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LandingComponent from './landing/LandingComponent';
 import SearchComponent from './search/SearchComponent';
+import DetailComponent from './detail/DetailComponent';
 
 const propTypes = {
 }
@@ -21,6 +22,7 @@ class App extends React.Component {
         <Router>
           <Route exact path="/" component={LandingComponent}/>
           <Route path="/search" component={SearchComponent}/>
+          <Route path="/detail" component={DetailComponent}/>
         </Router>
       </div>
     );
