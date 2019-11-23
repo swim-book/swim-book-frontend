@@ -2,8 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import TopBarComponent from '../TopBarComponent';
+import queryString from 'query-string'
 
 import { Link } from "react-router-dom";
+
+import axios from 'axios';
 
 const propTypes = {
 }
@@ -12,6 +15,27 @@ const defaultProps = {
 }
 
 class SearchComponent extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        const params = queryString.parse(this.props.location.search);
+
+        const selectedArea = params.selectedArea;
+        const selectedStyle = params.selectedStyle;
+        const selectedTime = params.selectedTime;
+        const selectedGender = params.selectedGender;
+        
+        axios.get("https://jsonplaceholder.typicode.com/todos/1", {
+            params: {}
+        }).then((res) => {
+            console.log("res : "  + JSON.stringify(res.data));
+        })
+
+    }
+
     getContent = () => {
         var list = []
         for (var i = 0; i < 100; i++) {
