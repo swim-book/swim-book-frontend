@@ -52,7 +52,7 @@ class SearchComponent extends React.Component {
                     </div>
                 </nav>
 
-                <div className="d-flex p-5">
+                <div className="d-flex" style={{"padding-left":"300px", "padding-right":"300px", "padding-top":"30px"}}>
                     <div className="card d-block mr-5" style={{ width: '300px', height: '600px' }}>
                         detail filter
                     </div>
