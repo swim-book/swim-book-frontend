@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 const propTypes = {
     areaFilter: PropTypes.array,
@@ -66,8 +66,39 @@ const defaultProps = {
 
 class FilterCompoenent extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            "redirect": false,
+            "selectedArea": this.props.areaFilter[0],
+            "selectedStyle": this.props.styleFilter[0],
+            "selectedTime": this.props.timeFilter[0],
+            "selectedGender": this.props.genderFilter[0],
+        }
+    }
+
+    onChangeEvent = (key) => {
+        return (event) => {
+            var item = event.target.value
+            this.setState({ key: item })
+        }
+    }
+
+    onSearchClick = () => {
+        this.setState({ "redirect": true })
+    }
+
     render() {
-        const createSelector = (id, items) => {
+        if (this.state.redirect) {
+            return (
+                <Redirect to={`./search?selectedArea=${this.state.selectedArea}&selectedStyle=${this.state.selectedStyle}&selectedTime=${this.state.selectedTime}&selectedGender=${this.state.selectedGender}`}>
+
+                </Redirect>
+            )
+        }
+
+        const createSelector = (id, items, onChange) => {
             const createOption = (value) => {
                 return (
                     <option key={value} value={value}>{value}</option>
@@ -75,7 +106,7 @@ class FilterCompoenent extends React.Component {
             }
             return (
                 <div className="input-group mb-3">
-                    <select className="custom-select" id={id} defaultValue="1">
+                    <select className="custom-select" id={id} defaultValue="1" onChange={onChange}>
                         {items.map((item) => { return createOption(item) })}
                     </select>
                 </div>
@@ -87,17 +118,15 @@ class FilterCompoenent extends React.Component {
                     1초안에 소개시켜드립니다.</h2>
                 <div className="pt-4">
                     <div className="row">
-                        <div className="col">{createSelector("areaFilter", this.props.areaFilter)}</div>
-                        <div className="col">{createSelector("styleFilter", this.props.styleFilter)}</div>
+                        <div className="col">{createSelector("areaFilter", this.props.areaFilter, this.onChangeEvent('selectedArea'))}</div>
+                        <div className="col">{createSelector("styleFilter", this.props.styleFilter, this.onChangeEvent('selectedStyle'))}</div>
                     </div>
                     <div className="row">
-                        <div className="col">{createSelector("timeFilter", this.props.timeFilter)}</div>
-                        <div className="col">{createSelector("genderFilter", this.props.genderFilter)}</div>
+                        <div className="col">{createSelector("timeFilter", this.props.timeFilter, this.onChangeEvent('selectedTime'))}</div>
+                        <div className="col">{createSelector("genderFilter", this.props.genderFilter, this.onChangeEvent('selectedGender'))}</div>
                     </div>
                 </div>
-                <Link to="/search">
-                    <button className="btn btn-success btn-block">검색</button>
-                </Link>
+                <button className="btn btn-success btn-block" onClick={this.onSearchClick}>검색</button>
             </span>
         );
     }
