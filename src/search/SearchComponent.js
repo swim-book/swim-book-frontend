@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import TopBarComponent from '../TopBarComponent';
 
+import { Link } from "react-router-dom";
+
 const propTypes = {
 }
 
@@ -19,18 +21,20 @@ class SearchComponent extends React.Component {
         return list.map((item) => {
             return (
                 <div key={item} className="card mb-3">
-                    <div className="row no-gutters">
-                        <div className="">
-                            <img src="http://img.hani.co.kr/imgdb/resize/2012/0729/134347251332_20120729.JPG" className="card-img-top" style={{ width: '200px', height: '300px', 'object-fit': 'cover' }} />
-                        </div>
-                        <div className="col-md-8">
-                            <div className="card-body">
-                                <h5 className="card-title">박태환 강사</h5>
-                                <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                    <Link to="/detail">
+                        <div className="row no-gutters">
+                            <div className="">
+                                <img src="http://img.hani.co.kr/imgdb/resize/2012/0729/134347251332_20120729.JPG" className="card-img-top" style={{ width: '200px', height: '300px', 'object-fit': 'cover' }} />
+                            </div>
+                            <div className="col-md-8">
+                                <div className="card-body">
+                                    <h5 className="card-title">박태환 강사</h5>
+                                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 </div>
             )
         })
@@ -38,9 +42,9 @@ class SearchComponent extends React.Component {
     render() {
         return (
             <div>
-                <TopBarComponent/>
+                <TopBarComponent />
 
-                <div className="d-flex" style={{"padding-left":"300px", "padding-right":"300px", "padding-top":"30px"}}>
+                <div className="d-flex" style={{ "padding-left": "300px", "padding-right": "300px", "padding-top": "30px" }}>
                     <div className="card d-block mr-5" style={{ width: '300px', height: '600px' }}>
                         detail filter
                     </div>
