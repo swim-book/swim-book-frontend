@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Link } from "react-router-dom";
+
 const propTypes = {
     areaFilter: PropTypes.array,
     styleFilter: PropTypes.array,
@@ -93,7 +95,9 @@ class FilterCompoenent extends React.Component {
                         <div className="col">{createSelector("genderFilter", this.props.genderFilter)}</div>
                     </div>
                 </div>
-                <button className="btn btn-success btn-block">검색</button>
+                <Link to="/search">
+                    <button className="btn btn-success btn-block">검색</button>
+                </Link>
             </span>
         );
     }
