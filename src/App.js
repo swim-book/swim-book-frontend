@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LandingComponent from './landing/LandingComponent';
+import SearchComponent from './search/SearchComponent';
 
 const propTypes = {
 }
@@ -15,7 +17,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <LandingComponent />
+        <Router>
+          <Route exact path="/" component={LandingComponent}/>
+          <Route path="/search" component={SearchComponent}/>
+        </Router>
       </div>
     );
   }
