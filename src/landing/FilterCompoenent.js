@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { Redirect } from "react-router-dom";
 
+import { geolocated } from "react-geolocated";
+
 const propTypes = {
     areaFilter: PropTypes.array,
     styleFilter: PropTypes.array,
@@ -12,55 +14,54 @@ const propTypes = {
 
 const defaultProps = {
     areaFilter: [
-        "모든 지역",
-        "서울 강남구‎",
-        "서울 강동구‎",
-        "서울 강북구‎",
-        "서울 강서구‎",
-        "서울 관악구‎",
-        "서울 광진구‎",
-        "서울 구로구‎",
-        "서울 금천구‎",
-        "서울 노원구‎",
-        "서울 도봉구‎",
-        "서울 동대문구",
-        "서울 동작구‎",
-        "서울 마포구‎",
-        "서울 서대문구",
-        "서울 서초구‎",
-        "서울 성동구‎",
-        "서울 성북구‎",
-        "서울 송파구‎",
-        "서울 양천구‎",
-        "서울 영등포구",
-        "서울 용산구‎",
-        "서울 은평구‎",
-        "서울 종로구‎",
-        "서울 중구‎",
-        "서울 중랑구",
+        {name:"모든 지역"},
+        {name:"서울 강남구‎"},
+        {name:"서울 강동구‎"},
+        {name:"서울 강북구‎"},
+        {name:"서울 강서구‎"},
+        {name:"서울 관악구‎"},
+        {name:"서울 광진구‎"},
+        {name:"서울 구로구‎"},
+        {name:"서울 금천구‎"},
+        {name:"서울 노원구‎"},
+        {name:"서울 도봉구‎"},
+        {name:"서울 동대문구"},
+        {name:"서울 동작구‎"},
+        {name:"서울 마포구‎"},
+        {name:"서울 서대문구"},
+        {name:"서울 서초구‎"},
+        {name:"서울 성동구‎"},
+        {name:"서울 성북구‎"},
+        {name:"서울 송파구‎"},
+        {name:"서울 양천구‎"},
+        {name:"서울 영등포구"},
+        {name:"서울 용산구‎"},
+        {name:"서울 은평구‎"},
+        {name:"서울 종로구‎"},
+        {name:"서울 중구‎"},
+        {name:"서울 중랑구"},
     ],
     styleFilter: [
-        "모든 영법",
-        "자유형",
-        "횡영",
-        "배형",
-        "평형",
-        "개헤엄",
-        "접영",
-        "선헤엄"
+        {name:"모든 영법",key:"all"},
+        {name:"자유형",key:"free"},
+        {name:"횡영",key:"all"},
+        {name:"배형",key:"back"},
+        {name:"평형",key:"flat"},
+        {name:"개헤엄",key:"all"},
+        {name:"접영",key:"all"},
+        {name:"선헤엄",key:"all"},
     ],
     timeFilter: [
-        "모든 시간대",
-        "새벽",
-        "아침",
-        "점심",
-        "저녁",
-        "야간"
+        {name:"모든 시간대", key:"all"},
+        {name:"월", key:"월"},
+        {name:"화", key:"화"},
+        {name:"수", key:"수"},
+        {name:"목", key:"목"},
+        {name:"금", key:"금"},
     ],
     genderFilter: [
-        "남/여",
-        "남성만",
-        "여성만"
+        {name:"남/여", key:1},
+        {name:"여성만", key:0}
     ]
 }
 
@@ -71,17 +72,18 @@ class FilterCompoenent extends React.Component {
 
         this.state = {
             "redirect": false,
-            "selectedArea": this.props.areaFilter[0],
-            "selectedStyle": this.props.styleFilter[0],
-            "selectedTime": this.props.timeFilter[0],
-            "selectedGender": this.props.genderFilter[0],
+            "selectedArea": this.props.areaFilter[0].key,
+            "selectedStyle": this.props.styleFilter[0].key,
+            "selectedTime": this.props.timeFilter[0].key,
+            "selectedGender": this.props.genderFilter[0].key,
         }
     }
 
     onChangeEvent = (key) => {
         return (event) => {
             var item = event.target.value
-            this.setState({ key: item })
+            console.log("key : " + key + " value : " + item)
+            this.setState({ key: item.key })
         }
     }
 
@@ -91,6 +93,7 @@ class FilterCompoenent extends React.Component {
 
     render() {
         if (this.state.redirect) {
+            console.log("state : " + JSON.stringify(this.state));
             return (
                 <Redirect to={`./search?selectedArea=${this.state.selectedArea}&selectedStyle=${this.state.selectedStyle}&selectedTime=${this.state.selectedTime}&selectedGender=${this.state.selectedGender}`}>
 
@@ -101,7 +104,7 @@ class FilterCompoenent extends React.Component {
         const createSelector = (id, items, onChange) => {
             const createOption = (value) => {
                 return (
-                    <option key={value} value={value}>{value}</option>
+                    <option key={value.name} value={value.key}>{value.name}</option>
                 )
             }
             return (
@@ -135,4 +138,9 @@ class FilterCompoenent extends React.Component {
 FilterCompoenent.propTypes = propTypes
 FilterCompoenent.defaultProps = defaultProps
 
-export default FilterCompoenent;
+export default geolocated({
+    positionOptions: {
+        enableHighAccuracy: false,
+    },
+    userDecisionTimeout: 5000,
+})(FilterCompoenent);

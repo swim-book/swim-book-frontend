@@ -18,6 +18,10 @@ class SearchComponent extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            dataList: []
+        }
     }
 
     componentDidMount() {
@@ -27,34 +31,48 @@ class SearchComponent extends React.Component {
         const selectedStyle = params.selectedStyle;
         const selectedTime = params.selectedTime;
         const selectedGender = params.selectedGender;
-        
-        axios.get("https://jsonplaceholder.typicode.com/todos/1", {
-            params: {}
+
+        axios.get("http://15.164.94.43:3000/v1/teachers", {
+            params: {
+                "swim_type": selectedStyle,
+                "gender": selectedGender,
+                // "group_n": 1,
+                "lesson_date": selectedTime
+            }
         }).then((res) => {
-            console.log("res : "  + JSON.stringify(res.data));
+            console.log("res : " + JSON.stringify(res.data));
+            this.setState({ dataList: res.data });
         })
 
     }
 
-    getContent = () => {
-        var list = []
-        for (var i = 0; i < 100; i++) {
-            list.push("dd");
-        }
+    getStar = (score) => {
+        return (
+            <div className="mt-3">
+            <span className={`fa fa-star ${score >=1 ? "checked" : ""}`}></span>
+            <span className={`fa fa-star ${score >=2 ? "checked" : ""}`}></span>
+            <span className={`fa fa-star ${score >=3 ? "checked" : ""}`}></span>
+            <span className={`fa fa-star ${score >=4 ? "checked" : ""}`}></span>
+            <span className={`fa fa-star ${score >=5 ? "checked" : ""}`}></span>
+        </div>                                  
+        )
+    }
 
-        return list.map((item) => {
+    getContent = () => {
+        return this.state.dataList.map((item) => {
             return (
                 <div key={item} className="card mb-3">
-                    <Link to="/detail">
+                    <Link to={`/detail?teacherId=${item.TeacherID}`}>
                         <div className="row no-gutters">
                             <div className="">
-                                <img src="http://img.hani.co.kr/imgdb/resize/2012/0729/134347251332_20120729.JPG" className="card-img-top" style={{ width: '200px', height: '300px', 'object-fit': 'cover' }} />
+                                <img src={item.Profile} className="card-img-top" style={{ width: '200px', height: '200px', objectFit: 'cover' }} />
                             </div>
                             <div className="col-md-8">
                                 <div className="card-body">
-                                    <h5 className="card-title">박태환 강사</h5>
-                                    <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p className="card-text"><small className="text-muted">Last updated 3 mins ago</small></p>
+                                    <h5 className="card-title">{item.Name}</h5> 
+                                    {this.getStar(item.AverageScore)}
+                                     <p className="card-text">지역 : {item.Local01} {item.Local02} {item.Local03}</p>
+                                     <p className="card-text">금액 : {item.Price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').substr(0,6)}원</p>
                                 </div>
                             </div>
                         </div>
@@ -68,14 +86,14 @@ class SearchComponent extends React.Component {
             <div>
                 <TopBarComponent />
 
-                <div className="d-flex" style={{ "padding-left": "300px", "padding-right": "300px", "padding-top": "30px" }}>
+                <div className="d-flex" style={{ paddingLeft: "300px", paddingRight: "300px", paddingTop: "30px" }}>
                     <div className="card d-block mr-5" style={{ width: '300px', height: '600px' }}>
                         detail filter
                     </div>
                     <div className="flex-fill">
                         <div className="d-flex justify-content-end mb-3">
                             <span>
-                                <select class="custom-select" id="sort">
+                                <select className="custom-select" id="sort">
                                     <option value="0">평점순</option>
                                     <option value="1">리뷰순</option>
                                     <option value="2">가격순</option>
