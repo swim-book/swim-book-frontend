@@ -14,32 +14,32 @@ const propTypes = {
 
 const defaultProps = {
     areaFilter: [
-        {name:"모든 지역"},
-        {name:"서울 강남구‎"},
-        {name:"서울 강동구‎"},
-        {name:"서울 강북구‎"},
-        {name:"서울 강서구‎"},
-        {name:"서울 관악구‎"},
-        {name:"서울 광진구‎"},
-        {name:"서울 구로구‎"},
-        {name:"서울 금천구‎"},
-        {name:"서울 노원구‎"},
-        {name:"서울 도봉구‎"},
-        {name:"서울 동대문구"},
-        {name:"서울 동작구‎"},
-        {name:"서울 마포구‎"},
-        {name:"서울 서대문구"},
-        {name:"서울 서초구‎"},
-        {name:"서울 성동구‎"},
-        {name:"서울 성북구‎"},
-        {name:"서울 송파구‎"},
-        {name:"서울 양천구‎"},
-        {name:"서울 영등포구"},
-        {name:"서울 용산구‎"},
-        {name:"서울 은평구‎"},
-        {name:"서울 종로구‎"},
-        {name:"서울 중구‎"},
-        {name:"서울 중랑구"},
+        {name:"모든 지역",key:"0"},
+        {name:"서울 강남구‎",key:"1"},
+        {name:"서울 강동구‎",key:"2"},
+        {name:"서울 강북구‎",key:"3"},
+        {name:"서울 강서구‎",key:"4"},
+        {name:"서울 관악구‎",key:"5"},
+        {name:"서울 광진구‎",key:"6"},
+        {name:"서울 구로구‎",key:"7"},
+        {name:"서울 금천구‎",key:"8"},
+        {name:"서울 노원구‎",key:"9"},
+        {name:"서울 도봉구‎",key:"10"},
+        {name:"서울 동대문구",key:"11"},
+        {name:"서울 동작구‎",key:"12"},
+        {name:"서울 마포구‎",key:"13"},
+        {name:"서울 서대문구",key:"14"},
+        {name:"서울 서초구‎",key:"15"},
+        {name:"서울 성동구‎",key:"16"},
+        {name:"서울 성북구‎",key:"17"},
+        {name:"서울 송파구‎",key:"18"},
+        {name:"서울 양천구‎",key:"19"},
+        {name:"서울 영등포구",key:"20"},
+        {name:"서울 용산구‎",key:"21"},
+        {name:"서울 은평구‎",key:"22"},
+        {name:"서울 종로구‎",key:"23"},
+        {name:"서울 중구‎",key:"24"},
+        {name:"서울 중랑구",key:"25"},
     ],
     styleFilter: [
         {name:"모든 영법",key:"all"},
@@ -60,8 +60,8 @@ const defaultProps = {
         {name:"금", key:"금"},
     ],
     genderFilter: [
-        {name:"남/여", key:1},
-        {name:"여성만", key:0}
+        {name:"남/여", key:"1"},
+        {name:"여성만", key:"0"}
     ]
 }
 
@@ -72,10 +72,10 @@ class FilterCompoenent extends React.Component {
 
         this.state = {
             "redirect": false,
-            "selectedArea": this.props.areaFilter[0].key,
-            "selectedStyle": this.props.styleFilter[0].key,
-            "selectedTime": this.props.timeFilter[0].key,
-            "selectedGender": this.props.genderFilter[0].key,
+            selectedArea: this.props.areaFilter[0].key,
+            selectedStyle: this.props.styleFilter[0].key,
+            selectedTime: this.props.timeFilter[0].key,
+            selectedGender: this.props.genderFilter[0].key,
         }
     }
 
@@ -83,7 +83,10 @@ class FilterCompoenent extends React.Component {
         return (event) => {
             var item = event.target.value
             console.log("key : " + key + " value : " + item)
-            this.setState({ key: item.key })
+            var newState = {}
+            newState[key] = item
+            console.log("object : " + JSON.stringify(newState))
+            this.setState(newState)
         }
     }
 
@@ -109,7 +112,7 @@ class FilterCompoenent extends React.Component {
             }
             return (
                 <div className="input-group mb-3">
-                    <select className="custom-select" id={id} defaultValue="1" onChange={onChange}>
+                    <select className="custom-select" id={id} onChange={onChange}>
                         {items.map((item) => { return createOption(item) })}
                     </select>
                 </div>
