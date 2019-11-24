@@ -17,6 +17,8 @@ class DetailComponent extends React.Component {
         super(props);
 
         this.state = {
+            name: "",
+            profile: "",
             reviewList: []
         }
     }
@@ -31,20 +33,26 @@ class DetailComponent extends React.Component {
                 "teacher_id": teacherid
             }
         }).then((res) => {
-            console.log("res : " + JSON.stringify(res.data));
             var data = res.data[0];
+            console.log("res : " + JSON.stringify(data));
             var scoreList = data.Score.split(',');
             var commentList = data.Comment.split(',');
             var userList = data.UserName.split(',');
             var reviewList = [];
-            for(var i=0;i<scoreList.length;i++){
+            for (var i = 0; i < scoreList.length; i++) {
                 reviewList.push({
-                    "userName":userList[i],
-                    "score":scoreList[i],
-                    "comment":commentList[i]
+                    "userName": userList[i],
+                    "score": scoreList[i],
+                    "comment": commentList[i]
                 })
             }
-            this.setState({ reviewList: reviewList });
+            this.setState(
+                {
+                    name: data.Name,
+                    profile: data.Profile,
+                    reviewList: reviewList
+                }
+            );
         })
 
     }
@@ -89,7 +97,7 @@ class DetailComponent extends React.Component {
                     </div>
                     <div className="card-img-overlay text-white d-flex align-items-center pl-5 ml-5">
                         <div>
-                            <h1>박태환 선생님과 함께하는</h1><br />
+                            <h1>{this.state.name} 선생님과 함께하는</h1><br />
                             <h2>수영 강습</h2>
                         </div>
                     </div>
@@ -97,8 +105,8 @@ class DetailComponent extends React.Component {
                 <div style={{ paddingLeft: "300px", paddingRight: "300px", paddingTop: "100px" }}>
                     <div className="position-sticky sticky-top card text-center p-5" style={{ width: "300px" }}>
                         <span className="align-center">
-                            <img src="https://search.pstatic.net/common?type=a&size=120x150&quality=95&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2F48%2F2014060911444311.jpg" style={{ borderRadius: "50%", width: "150px" }} />
-                            <h3 className="mt-3">박태환 강사</h3>
+                            <img src={this.state.profile} style={{ borderRadius: "50%", width: "150px" }} />
+                            <h3 className="mt-3">{this.state.name} 강사</h3>
                             <h6>강남 샹제리제 수영장</h6>
                             <p className="mt-5">"수영의 정석!"</p>
                             <button className="btn btn-primary w-100">바로 신청하기</button>
@@ -109,11 +117,11 @@ class DetailComponent extends React.Component {
                         <div>
                             <h3>강사 소개</h3>
                             <p className="pt-5">안녕하세요 회원님의 라이프 스타일에 건강한 변화를 드리고 싶습니다.<br /><br />
-                                트레이너 박태환입니다.<br /><br />
+                                트레이너 {this.state.name}입니다.<br /><br />
                                 저는 엘리트 체육특기생으로 육상, 복싱, 수영을 전공하고 전역 후 보디빌딩으로 전향하여 5년째 트레이너 생활을 이어오고 있습니다.<br /><br />
                                 불편한 부분을 개선할 수 있는 교정 분야에서부터 다이어트, 근력증가, 기초체력 증진까지 회원님의 다양한 목적에 맞는 운동을 도와드리고 있습니다. <br /><br />
                                 제가 운동 시 무엇보다 중요하게 생각하는 것은 일상에서의 회원님이 향상 감을 느낄 수 있도록 하는 것입니다. 라이프 스타일 전면에서 좋은 습관을 가질 수 있도록 밀착 코치해드립니다. 생활의 작은 습관부터 정확한 운동까지 일상의 컨디션을 올리고 원하는 몸을 가질 수 있도록 도와드리겠습니다.<br /><br />
-                                저 박태환과 함께 운동해보시는 건 어떠세요?</p>
+                                저 {this.state.name}과 함께 운동해보시는 건 어떠세요?</p>
                         </div>
                         <div className="pt-5">
                             <h3>강의 스케쥴</h3>
