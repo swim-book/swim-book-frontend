@@ -17,7 +17,7 @@ class DetailComponent extends React.Component {
         super(props);
 
         this.state = {
-            dataList: []
+            reviewList: []
         }
     }
     componentDidMount() {
@@ -29,22 +29,51 @@ class DetailComponent extends React.Component {
                 "swim_type": "all",
                 "lesson_date": "all",
                 "teacher_id": teacherid
-         }
+            }
         }).then((res) => {
             console.log("res : " + JSON.stringify(res.data));
-            this.setState({ dataList: res.data });
+            var data = res.data[0];
+            var scoreList = data.Score.split(',');
+            var commentList = data.Comment.split(',');
+            var userList = data.UserName.split(',');
+            var reviewList = [];
+            for(var i=0;i<scoreList.length;i++){
+                reviewList.push({
+                    "userName":userList[i],
+                    "score":scoreList[i],
+                    "comment":commentList[i]
+                })
+            }
+            this.setState({ reviewList: reviewList });
         })
 
     }
     getStar = (score) => {
         return (
             <div className="mt-3">
-            <span className={`fa fa-star ${score >=1 ? "checked" : ""}`}></span>
-            <span className={`fa fa-star ${score >=2 ? "checked" : ""}`}></span>
-            <span className={`fa fa-star ${score >=3 ? "checked" : ""}`}></span>
-            <span className={`fa fa-star ${score >=4 ? "checked" : ""}`}></span>
-            <span className={`fa fa-star ${score >=5 ? "checked" : ""}`}></span>
-        </div>                                  
+                <span className={`fa fa-star ${score >= 1 ? "checked" : ""}`}></span>
+                <span className={`fa fa-star ${score >= 2 ? "checked" : ""}`}></span>
+                <span className={`fa fa-star ${score >= 3 ? "checked" : ""}`}></span>
+                <span className={`fa fa-star ${score >= 4 ? "checked" : ""}`}></span>
+                <span className={`fa fa-star ${score >= 5 ? "checked" : ""}`}></span>
+            </div>
+        )
+    }
+    getReview = (review) => {
+        return (
+            <a href="#" className="list-group-item">
+                <div className="media col-md-3">
+
+                </div>
+
+                <div className="col-md-6">
+                    <h4 className="list-group-item-heading"> {this.getStar(review.score)} {review.userName} </h4>
+                    <p className="list-group-item-text"> {review.comment} </p>
+                </div>
+                <div className="col-md-3 text-center">
+
+                </div>
+            </a>
         )
     }
     render() {
@@ -175,55 +204,19 @@ class DetailComponent extends React.Component {
                     </div>
                 </div>
 
-<div className="container">
-    <div className="row">
-		<div className="well">
-            <br></br><br></br>
-        <h1 className="text-center">Reviews</h1>
-        <div className="list-group">
-
-          <a href="#" className="list-group-item">
-                <div className="media col-md-3">
-                    
-                </div>
-                  
-                <div className="col-md-6">
-                    <h4 className="list-group-item-heading"> {this.getStar(3)} List group heading </h4>
-                    <p className="list-group-item-text"> Eu eum corpora torquatos, ne postea constituto mea, quo tale lorem facer no. Ut sed odio appetere partiendo, quo meliore salutandi ex. Vix an sanctus vivendo, sed vocibus accumsan petentium ea. 
-                        Sed integre saperet at, no nec debet erant, quo dico incorrupte comprehensam ut. Et minimum consulatu ius, an dolores iracundia est, oportere vituperata interpretaris sea an. Sed id error quando indoctum, mel suas saperet at.                         
-                    </p>
-                </div>
-                <div className="col-md-3 text-center">                    
-                
-                </div>
-          </a>
-          <a href="#" className="list-group-item">
-                <div className="media col-md-3">
-
-                </div>
-                <div className="col-md-6">
-                    <h4 className="list-group-item-heading"> {this.getStar(3)} List group heading </h4>
-                    <p className="list-group-item-text"> Ut mea viris eripuit theophrastus, cu ponderum accusata consequuntur cum. Suas quaestio cotidieque pro ea. Nam nihil persecuti philosophia id, nam quot populo ea. 
-                        Falli urbanitas ei pri, eu est enim volumus, mei no volutpat periculis. Est errem iudicabit cu. At usu vocibus officiis, ad ius eros tibique appellantur.                         
-                    </p>
-                </div>
-                <div className="col-md-3 text-center">
-                    <div className="stars">
-                        <span className="glyphicon glyphicon-star"></span>
-                        <span className="glyphicon glyphicon-star"></span>
-                        <span className="glyphicon glyphicon-star"></span>
-                        <span className="glyphicon glyphicon-star"></span>
-                        <span className="glyphicon glyphicon-star-empty"></span>
+                <div className="container w-100">
+                    <div className="row">
+                        <div className="well w-100">
+                            <br></br><br></br>
+                            <h1 className="text-center">Reviews</h1>
+                            <div className="list-group">
+                                {this.state.reviewList.map((review) => this.getReview(review))}
+                            </div>
+                        </div>
                     </div>
-                    
                 </div>
-          </a>
-        </div>
-        </div>
-	</div>
-</div>
             </div>
-            
+
         );
     }
 }
