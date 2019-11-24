@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import logo from './resource/logo.png';
+import logo_white from './resource/logo_white.png';
 import topBarImage from './resource/top_bar_background.png';
 
 const propTypes = {
@@ -20,15 +21,15 @@ class TopBarComponent extends React.Component {
                     <nav className="navbar navbar-expand-lg navbar-light h-100" style={{ backgroundImage: "url("+topBarImage+")", backgroundSize:'cover', backgroundRepeat:'no-repeat' }}>
                         <div className="h-100">
                         <a className="navbar-brand" href="/" style={{ marginLeft: "350px" }}>
-                            <img src={logo} height="30" className="d-inline-block align-top" />
-                            <span className="m-2">Swim books</span>
+                            <img src={logo_white} height="60" className="d-inline-block align-top" />
+                            {/* <span className="m-2 text-white">Swim Book</span> */}
                         </a>
                         </div>
                         <div className="ml-auto"></div>
                         <div className="h-100" style={{ marginRight: "350px" }}>
                             <div className="navbar-nav">
-                                <a className="nav-item nav-link active pl-3 pr-3" href="#">회원가입</a>
-                                <a className="nav-item nav-link active pl-3 pr-3" href="#">로그인</a>
+                                <a className="nav-item nav-link active pl-3 pr-3 text-white" href="#">회원가입</a>
+                                <a className="nav-item nav-link active pl-3 pr-3 text-white" href="#">로그인</a>
                             </div>
                         </div>
                     </nav>

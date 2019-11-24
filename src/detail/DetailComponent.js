@@ -25,6 +25,7 @@ class DetailComponent extends React.Component {
             teacherId: "",
             career: "",
             timeTable: "",
+            price:0,
             reviewList: []
         }
     }
@@ -57,6 +58,7 @@ class DetailComponent extends React.Component {
                     teacherId: teacherid,
                     name: data.Name,
                     profile: data.Profile,
+                    price: data.Price,
                     score: data.AverageScore,
                     lessonInfo: data.LessonInfo,
                     career: data.Career,
@@ -126,8 +128,8 @@ class DetailComponent extends React.Component {
                         <span className="align-center">
                             <img src={this.state.profile} style={{ borderRadius: "50%", width: "150px" }} />
                             <h3 className="mt-3">{this.state.name} 강사</h3>
-                            <h6>강남 샹제리제 수영장</h6>
-                            <p className="mt-5">"수영의 정석!"</p>
+                            <h6>강남 샹제리제 수영장</h6>                        
+                            <h5 style={{marginTop:"20px"}}>{this.state.price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,').substr(0,6)}원 </h5>                
                             <button className="btn btn-primary w-100">바로 신청하기</button>
 
                         </span>

@@ -120,7 +120,7 @@ class FilterCompoenent extends React.Component {
             )
         }
         return (
-            <span className="p-2 m-2">
+            <span className="p-2 m-2 text-white">
                 <h2 className="font-weight-bold">딱! 맞는 수영강사를<br />
                     1초안에 소개시켜드립니다.</h2>
                 <div className="pt-4">

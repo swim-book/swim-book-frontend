@@ -68,6 +68,7 @@ const defaultProps = {
     ]
 }
 
+
 class SearchComponent extends React.Component {
 
     constructor(props) {
@@ -82,8 +83,11 @@ class SearchComponent extends React.Component {
             selectedTime: params.selectedTime,
             selectedGender: params.selectedGender
         }
+        
     }
 
+      
+    
     componentDidMount() {
         this.requestApi();
     }
@@ -152,6 +156,7 @@ class SearchComponent extends React.Component {
     onSearchClick = () => {
         this.requestApi();
     }
+    
 
     render() {
         const createSelector = (id, items, onChange) => {
@@ -198,7 +203,9 @@ class SearchComponent extends React.Component {
                     </div>
 
                 </div>
+                
             </div>
+            
         );
     }
 }

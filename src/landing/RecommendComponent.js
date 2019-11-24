@@ -57,7 +57,7 @@ class RecommendComponent extends React.Component {
 
         return (
             <Carousel.Item>
-                <h5 className="text-center">이번주 인기강사</h5>
+                <h5 className="text-center text-white">이번주 인기강사</h5>
 
                 <img
                     className="d-block w-100"
