@@ -5,6 +5,7 @@ import TopBarComponent from '../TopBarComponent';
 import queryString from 'query-string'
 import axios from 'axios';
 import lesson from '../resource/lesson.mp4'
+import lesson2 from '../resource/lesson2.mp4'
 
 const propTypes = {
 }
@@ -19,8 +20,9 @@ class DetailComponent extends React.Component {
         this.state = {
             name: "",
             profile: "",
-            score:0,
-            lessonInfo:"",
+            score: 0,
+            lessonInfo: "",
+            teacherId: "",
             reviewList: []
         }
     }
@@ -50,6 +52,7 @@ class DetailComponent extends React.Component {
             }
             this.setState(
                 {
+                    teacherId: teacherid,
                     name: data.Name,
                     profile: data.Profile,
                     score: data.AverageScore,
@@ -94,7 +97,9 @@ class DetailComponent extends React.Component {
                 <TopBarComponent />
                 <div className="card p-0">
                     <video autoPlay loop className="container-fluid p-0" style={{ height: "650px", objectFit: "cover" }}>
-                        <source src={lesson}></source>
+                        <source src={
+                            this.state.teacherId == 2 ? lesson : lesson2
+                        }></source>
                     </video>
                     <div className="card-img-overlay" style={{ backgroundColor: "#000000", opacity: "0.3" }}>
 
@@ -223,7 +228,7 @@ class DetailComponent extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
 
         );
     }
