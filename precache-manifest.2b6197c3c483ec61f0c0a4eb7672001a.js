@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a856da48911b8256269949a768b9f37f",
+    "revision": "cb030f791a533377339a20e9479c1799",
     "url": "/swim-book-frontend/index.html"
   },
   {
-    "revision": "d38260fcd5825da423e3",
+    "revision": "eabc71a9973f5c01ef7e",
     "url": "/swim-book-frontend/static/css/2.b0bb7f2c.chunk.css"
   },
   {
-    "revision": "27ea653fc1b499f15151",
-    "url": "/swim-book-frontend/static/css/main.51177a9f.chunk.css"
+    "revision": "a69779f2e39fbb394d13",
+    "url": "/swim-book-frontend/static/css/main.2ad949c2.chunk.css"
   },
   {
-    "revision": "d38260fcd5825da423e3",
-    "url": "/swim-book-frontend/static/js/2.35359b35.chunk.js"
+    "revision": "eabc71a9973f5c01ef7e",
+    "url": "/swim-book-frontend/static/js/2.eb25d21d.chunk.js"
   },
   {
-    "revision": "27ea653fc1b499f15151",
-    "url": "/swim-book-frontend/static/js/main.774941c8.chunk.js"
+    "revision": "a69779f2e39fbb394d13",
+    "url": "/swim-book-frontend/static/js/main.d2522c6d.chunk.js"
   },
   {
     "revision": "9823a668bb80eca0602c",
@@ -34,5 +34,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "b0ba6b0722ad64edcb6658b7723e1103",
     "url": "/swim-book-frontend/static/media/logo.b0ba6b07.png"
+  },
+  {
+    "revision": "4c5b0611146fe5874955549d1a7df10b",
+    "url": "/swim-book-frontend/static/media/top_bar_background.4c5b0611.png"
   }
 ]);

@@ -1,27 +1,28 @@
 {
   "files": {
-    "main.css": "/swim-book-frontend/static/css/main.51177a9f.chunk.css",
-    "main.js": "/swim-book-frontend/static/js/main.774941c8.chunk.js",
-    "main.js.map": "/swim-book-frontend/static/js/main.774941c8.chunk.js.map",
+    "main.css": "/swim-book-frontend/static/css/main.2ad949c2.chunk.css",
+    "main.js": "/swim-book-frontend/static/js/main.d2522c6d.chunk.js",
+    "main.js.map": "/swim-book-frontend/static/js/main.d2522c6d.chunk.js.map",
     "runtime-main.js": "/swim-book-frontend/static/js/runtime-main.68576770.js",
     "runtime-main.js.map": "/swim-book-frontend/static/js/runtime-main.68576770.js.map",
     "static/css/2.b0bb7f2c.chunk.css": "/swim-book-frontend/static/css/2.b0bb7f2c.chunk.css",
-    "static/js/2.35359b35.chunk.js": "/swim-book-frontend/static/js/2.35359b35.chunk.js",
-    "static/js/2.35359b35.chunk.js.map": "/swim-book-frontend/static/js/2.35359b35.chunk.js.map",
+    "static/js/2.eb25d21d.chunk.js": "/swim-book-frontend/static/js/2.eb25d21d.chunk.js",
+    "static/js/2.eb25d21d.chunk.js.map": "/swim-book-frontend/static/js/2.eb25d21d.chunk.js.map",
     "index.html": "/swim-book-frontend/index.html",
-    "precache-manifest.14c77fd3b28738a2db18d9e1565de85a.js": "/swim-book-frontend/precache-manifest.14c77fd3b28738a2db18d9e1565de85a.js",
+    "precache-manifest.2b6197c3c483ec61f0c0a4eb7672001a.js": "/swim-book-frontend/precache-manifest.2b6197c3c483ec61f0c0a4eb7672001a.js",
     "service-worker.js": "/swim-book-frontend/service-worker.js",
     "static/css/2.b0bb7f2c.chunk.css.map": "/swim-book-frontend/static/css/2.b0bb7f2c.chunk.css.map",
-    "static/css/main.51177a9f.chunk.css.map": "/swim-book-frontend/static/css/main.51177a9f.chunk.css.map",
+    "static/css/main.2ad949c2.chunk.css.map": "/swim-book-frontend/static/css/main.2ad949c2.chunk.css.map",
     "static/media/lesson.mp4": "/swim-book-frontend/static/media/lesson.bb4105a6.mp4",
     "static/media/lesson2.mp4": "/swim-book-frontend/static/media/lesson2.c5279983.mp4",
-    "static/media/logo.png": "/swim-book-frontend/static/media/logo.b0ba6b07.png"
+    "static/media/logo.png": "/swim-book-frontend/static/media/logo.b0ba6b07.png",
+    "static/media/top_bar_background.png": "/swim-book-frontend/static/media/top_bar_background.4c5b0611.png"
   },
   "entrypoints": [
     "static/js/runtime-main.68576770.js",
     "static/css/2.b0bb7f2c.chunk.css",
-    "static/js/2.35359b35.chunk.js",
-    "static/css/main.51177a9f.chunk.css",
-    "static/js/main.774941c8.chunk.js"
+    "static/js/2.eb25d21d.chunk.js",
+    "static/css/main.2ad949c2.chunk.css",
+    "static/js/main.d2522c6d.chunk.js"
   ]
 }
