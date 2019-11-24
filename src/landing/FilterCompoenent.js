@@ -105,6 +105,7 @@ class FilterCompoenent extends React.Component {
         }
 
         const createSelector = (id, items, onChange, selectedValue=null) => {
+            console.log("id : " + id + " selected : " + selectedValue + " geo : " + this.props.isGeolocationEnabled + " geo2 : " + this.props.isGeolocationAvailable)
             const createOption = (value) => {
                 return (
                     <option key={value.name} value={value.key}>{value.name}</option>
@@ -124,7 +125,7 @@ class FilterCompoenent extends React.Component {
                     1초안에 소개시켜드립니다.</h2>
                 <div className="pt-4">
                     <div className="row">
-                        <div className="col">{createSelector("areaFilter", this.props.areaFilter, this.onChangeEvent('selectedArea'), this.props.isGeolocationEnabled ? "1":null)}</div>
+                        <div className="col">{createSelector("areaFilter", this.props.areaFilter, this.onChangeEvent('selectedArea'), this.props.isGeolocationEnabled ? "1":"0")}</div>
                         <div className="col">{createSelector("styleFilter", this.props.styleFilter, this.onChangeEvent('selectedStyle'))}</div>
                     </div>
                     <div className="row">
