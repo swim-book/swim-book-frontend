@@ -6,6 +6,7 @@ import queryString from 'query-string'
 import axios from 'axios';
 import lesson from '../resource/lesson.mp4'
 import lesson2 from '../resource/lesson2.mp4'
+import schedule from '../resource/schedule.png'
 
 const propTypes = {
 }
@@ -141,6 +142,8 @@ class DetailComponent extends React.Component {
                         </div>
                         <div className="pt-5">
                             <h3>강의 스케쥴</h3>
+                            <br></br>
+                            <img src={schedule} style={{ width: "600px" }}></img>
                             <ul className="pt-5">
                                 <li>요일 : {this.state.lessonDate}</li>
                                 <li>시간 : {this.state.lessonTime}</li>
