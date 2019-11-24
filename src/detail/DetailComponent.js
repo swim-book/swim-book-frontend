@@ -19,6 +19,7 @@ class DetailComponent extends React.Component {
         this.state = {
             name: "",
             profile: "",
+            score:0,
             reviewList: []
         }
     }
@@ -50,6 +51,7 @@ class DetailComponent extends React.Component {
                 {
                     name: data.Name,
                     profile: data.Profile,
+                    score: data.AverageScore,
                     reviewList: reviewList
                 }
             );
@@ -216,8 +218,9 @@ class DetailComponent extends React.Component {
                     <div className="row">
                         <div className="well w-100">
                             <br></br><br></br>
-                            <h1 className="text-center">Reviews</h1>
-                            <div className="list-group">
+                            <h1 className="d-inline">수강생 후기</h1>
+                            <span className="ml-3">평균<div className="fa fa-star checked ml-2" />{this.state.score}점</span>
+                            <div className="list-group mt-5 mb-5">
                                 {this.state.reviewList.map((review) => this.getReview(review))}
                             </div>
                         </div>
