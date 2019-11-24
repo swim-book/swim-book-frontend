@@ -23,6 +23,8 @@ class DetailComponent extends React.Component {
             score: 0,
             lessonInfo: "",
             teacherId: "",
+            career: "",
+            timeTable: "",
             reviewList: []
         }
     }
@@ -57,6 +59,9 @@ class DetailComponent extends React.Component {
                     profile: data.Profile,
                     score: data.AverageScore,
                     lessonInfo: data.LessonInfo,
+                    career: data.Career,
+                    lessonDate: data.LessonDate,
+                    lessonTime: data.LessonTime,
                     reviewList: reviewList
                 }
             );
@@ -91,6 +96,11 @@ class DetailComponent extends React.Component {
             </a>
         )
     }
+    newLineSupport = (text) => {
+        return text.split('<br>').map((item, i) => {
+            return <p key={i}>{item}</p>;
+        })
+    };
     render() {
         return (
             <div>
@@ -125,93 +135,18 @@ class DetailComponent extends React.Component {
                     <div className="flex-fill pl-5" style={{ marginLeft: "300px", marginTop: "-460px" }}>
                         <div>
                             <h3>강사 소개</h3>
-                            <p className="pt-5">{this.state.lessonInfo}</p>
+                            <p className="pt-5">{this.newLineSupport(this.state.lessonInfo)}</p>
                         </div>
                         <div className="pt-5">
                             <h3>강의 스케쥴</h3>
                             <ul className="pt-5">
-                                <li>새벽수영 06:00 ~ 07:00</li>
-                                <li>점심수영 12:00 ~ 13:00</li>
-                                <li>야간수영 19:00 ~ 20:00</li>
+                                <li>요일 : {this.state.lessonDate}</li>
+                                <li>시간 : {this.state.lessonTime}</li>
                             </ul>
                         </div>
                         <div className="pt-5">
                             <h3>자격 및 경력</h3>
-                            <ul className="pt-5">
-                                <li>2019.04 ~
-    인천광역시체육회</li>
-                                <li>
-                                    2016
-                                    제31회 리우데자네이루 올림픽 남자 수영 국가대표
-    </li>
-                                <li>
-                                    2014
-                                    제17회 인천 아시안게임 남자 수영 국가대표
-    </li>
-                                <li>
-                                    2013.05
-                                    해군 홍보대사
-    </li>
-                                <li>
-                                    2013.03
-                                    인천광역시청
-    </li>
-                                <li>
-                                    2012
-                                    제30회 런던 올림픽 남자 수영 국가대표
-    </li>
-                                <li>
-                                    2011.08
-                                    제13회 대구세계육상선수권대회 홍보대사
-    </li>
-                                <li>
-                                    2011
-                                    제14회 FINA 세계수영선수권대회 국가대표
-    </li>
-                                <li>
-                                    2010
-                                    제16회 광저우 아시안게임 남자 수영 국가대표
-    </li>
-                                <li>
-                                    2010.04
-                                    서울학생 7560+ 운동 홍보대사
-    </li>
-                                <li>
-                                    2009.06
-                                    경기국제보트쇼 및 코리아매치컵 세계요트대회 홍보대사
-    </li>
-                                <li>
-                                    2009.04
-                                    낙농자조금관리위원회 우유홍보대사
-    </li>
-                                <li>
-                                    2009.03
-                                    2020 부산 하계올림픽 유치 홍보대사
-    </li>
-                                <li>
-                                    2009.03
-                                    2014 인천아시안게임 홍보대사
-    </li>
-                                <li>
-                                    2008
-                                    제29회 베이징 올림픽 남자 수영 국가대표
-    </li>
-                                <li>
-                                    2007.09
-                                    국정홍보처 다이내믹 코리아 홍보대사
-    </li>
-                                <li>
-                                    2007.07
-                                    대한항공 명예홍보대사
-    </li>
-                                <li>
-                                    2006
-                                    제15회 도하 아시안게임 남자 수영 국가대표
-    </li>
-                                <li>
-                                    2004
-    제28회 아테네 올림픽 남자 수영 국가대표</li>
-                            </ul>
+                            {this.newLineSupport(this.state.career)}
                         </div>
                     </div>
                 </div>
