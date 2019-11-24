@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/swim-book-frontend/static/css/main.65b1093e.chunk.css",
-    "main.js": "/swim-book-frontend/static/js/main.a86f738c.chunk.js",
-    "main.js.map": "/swim-book-frontend/static/js/main.a86f738c.chunk.js.map",
+    "main.js": "/swim-book-frontend/static/js/main.c3434791.chunk.js",
+    "main.js.map": "/swim-book-frontend/static/js/main.c3434791.chunk.js.map",
     "runtime-main.js": "/swim-book-frontend/static/js/runtime-main.68576770.js",
     "runtime-main.js.map": "/swim-book-frontend/static/js/runtime-main.68576770.js.map",
     "static/css/2.b0bb7f2c.chunk.css": "/swim-book-frontend/static/css/2.b0bb7f2c.chunk.css",
-    "static/js/2.fd2d1310.chunk.js": "/swim-book-frontend/static/js/2.fd2d1310.chunk.js",
-    "static/js/2.fd2d1310.chunk.js.map": "/swim-book-frontend/static/js/2.fd2d1310.chunk.js.map",
+    "static/js/2.c1e50eb0.chunk.js": "/swim-book-frontend/static/js/2.c1e50eb0.chunk.js",
+    "static/js/2.c1e50eb0.chunk.js.map": "/swim-book-frontend/static/js/2.c1e50eb0.chunk.js.map",
     "index.html": "/swim-book-frontend/index.html",
-    "precache-manifest.96714339c26d7a7d77bf331e04cb304a.js": "/swim-book-frontend/precache-manifest.96714339c26d7a7d77bf331e04cb304a.js",
+    "precache-manifest.648f8be2cad7efcfa61bb46043d9cf0e.js": "/swim-book-frontend/precache-manifest.648f8be2cad7efcfa61bb46043d9cf0e.js",
     "service-worker.js": "/swim-book-frontend/service-worker.js",
     "static/css/2.b0bb7f2c.chunk.css.map": "/swim-book-frontend/static/css/2.b0bb7f2c.chunk.css.map",
     "static/css/main.65b1093e.chunk.css.map": "/swim-book-frontend/static/css/main.65b1093e.chunk.css.map",
@@ -19,8 +19,8 @@
   "entrypoints": [
     "static/js/runtime-main.68576770.js",
     "static/css/2.b0bb7f2c.chunk.css",
-    "static/js/2.fd2d1310.chunk.js",
+    "static/js/2.c1e50eb0.chunk.js",
     "static/css/main.65b1093e.chunk.css",
-    "static/js/main.a86f738c.chunk.js"
+    "static/js/main.c3434791.chunk.js"
   ]
 }
