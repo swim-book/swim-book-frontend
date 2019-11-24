@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8c7e8f338063eacfa2fb4e9494d12d71",
+    "revision": "bb3393cf6ae8de299b003c33718d85db",
     "url": "/swim-book-frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/swim-book-frontend/static/css/2.b0bb7f2c.chunk.css"
   },
   {
-    "revision": "f27d12586d59eb4e529a",
+    "revision": "fd91fc112a8d620748e7",
     "url": "/swim-book-frontend/static/css/main.2ad949c2.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/swim-book-frontend/static/js/2.eb25d21d.chunk.js"
   },
   {
-    "revision": "f27d12586d59eb4e529a",
-    "url": "/swim-book-frontend/static/js/main.b194de4d.chunk.js"
+    "revision": "fd91fc112a8d620748e7",
+    "url": "/swim-book-frontend/static/js/main.64a24ee5.chunk.js"
   },
   {
     "revision": "9823a668bb80eca0602c",
