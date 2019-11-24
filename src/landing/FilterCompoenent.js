@@ -104,7 +104,7 @@ class FilterCompoenent extends React.Component {
             )
         }
 
-        const createSelector = (id, items, onChange) => {
+        const createSelector = (id, items, onChange, selectedValue=null) => {
             const createOption = (value) => {
                 return (
                     <option key={value.name} value={value.key}>{value.name}</option>
@@ -112,7 +112,7 @@ class FilterCompoenent extends React.Component {
             }
             return (
                 <div className="input-group mb-3">
-                    <select className="custom-select" id={id} onChange={onChange}>
+                    <select className="custom-select" id={id} onChange={onChange} value={selectedValue}>
                         {items.map((item) => { return createOption(item) })}
                     </select>
                 </div>
@@ -124,7 +124,7 @@ class FilterCompoenent extends React.Component {
                     1초안에 소개시켜드립니다.</h2>
                 <div className="pt-4">
                     <div className="row">
-                        <div className="col">{createSelector("areaFilter", this.props.areaFilter, this.onChangeEvent('selectedArea'))}</div>
+                        <div className="col">{createSelector("areaFilter", this.props.areaFilter, this.onChangeEvent('selectedArea'), this.props.isGeolocationEnabled ? "1":null)}</div>
                         <div className="col">{createSelector("styleFilter", this.props.styleFilter, this.onChangeEvent('selectedStyle'))}</div>
                     </div>
                     <div className="row">
