@@ -18,8 +18,8 @@ class LandingComponent extends React.Component {
     render() {
         return (
             <div style={{ height: '100vh' }}>
-                <TopBarComponent />
-                <div className="container container-fluid h-100">
+                <TopBarComponent largeMode={true}/>
+                <div className="" style={{position:'absolute', height:'100vh', width:'100%'}}>
                     <div className="d-flex justify-content-center align-items-center h-100">
                         <FilterComponent />
                         <RecommendComponent />
