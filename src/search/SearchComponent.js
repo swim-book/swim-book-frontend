@@ -178,14 +178,13 @@ class SearchComponent extends React.Component {
                 <TopBarComponent />
 
                 <div className="d-flex" style={{ paddingLeft: "300px", paddingRight: "300px", paddingTop: "30px" }}>
-                    <div className="card d-block mr-5" style={{ width: '300px', height: '600px' }}>
-                        detail filter
-
+                    <div className="card d-block mr-5" style={{ width: '300px', height: '600px' }}>                        
+                    <br></br>
                         <div className="col">{createSelector("selectedArea", this.props.areaFilter, this.onChangeEvent('selectedArea'))}</div>
                         <div className="col">{createSelector("selectedStyle", this.props.styleFilter, this.onChangeEvent('selectedStyle'))}</div>
                         <div className="col">{createSelector("selectedTime", this.props.timeFilter, this.onChangeEvent('selectedTime'))}</div>
                         <div className="col">{createSelector("selectedGender", this.props.genderFilter, this.onChangeEvent('selectedGender'))}</div>
-                        <button className="btn btn-primary" onClick={this.onSearchClick}>검색하기</button>
+                        <button className="ml-3 btn btn-primary" onClick={this.onSearchClick}>검색하기</button>
                     </div>
                     <div className="flex-fill">
                         <div className="d-flex justify-content-end mb-3">
