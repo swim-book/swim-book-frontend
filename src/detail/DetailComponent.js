@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import TopBarComponent from '../TopBarComponent';
-
+import queryString from 'query-string'
+import axios from 'axios';
 import lesson from '../resource/lesson.mp4'
 
 const propTypes = {
@@ -12,6 +13,40 @@ const defaultProps = {
 }
 
 class DetailComponent extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            dataList: []
+        }
+    }
+    componentDidMount() {
+        const params = queryString.parse(this.props.location.search);
+
+        const teacherid = params.teacherId;
+        axios.get("http://15.164.94.43:3000/v1/teachers", {
+            params: {
+                "swim_type": "all",
+                "lesson_date": "all",
+                "teacher_id": teacherid
+         }
+        }).then((res) => {
+            console.log("res : " + JSON.stringify(res.data));
+            this.setState({ dataList: res.data });
+        })
+
+    }
+    getStar = (score) => {
+        return (
+            <div className="mt-3">
+            <span className={`fa fa-star ${score >=1 ? "checked" : ""}`}></span>
+            <span className={`fa fa-star ${score >=2 ? "checked" : ""}`}></span>
+            <span className={`fa fa-star ${score >=3 ? "checked" : ""}`}></span>
+            <span className={`fa fa-star ${score >=4 ? "checked" : ""}`}></span>
+            <span className={`fa fa-star ${score >=5 ? "checked" : ""}`}></span>
+        </div>                                  
+        )
+    }
     render() {
         return (
             <div>
@@ -139,7 +174,56 @@ class DetailComponent extends React.Component {
                         </div>
                     </div>
                 </div>
+
+<div className="container">
+    <div className="row">
+		<div className="well">
+            <br></br><br></br>
+        <h1 className="text-center">Reviews</h1>
+        <div className="list-group">
+
+          <a href="#" className="list-group-item">
+                <div className="media col-md-3">
+                    
+                </div>
+                  
+                <div className="col-md-6">
+                    <h4 className="list-group-item-heading"> {this.getStar(3)} List group heading </h4>
+                    <p className="list-group-item-text"> Eu eum corpora torquatos, ne postea constituto mea, quo tale lorem facer no. Ut sed odio appetere partiendo, quo meliore salutandi ex. Vix an sanctus vivendo, sed vocibus accumsan petentium ea. 
+                        Sed integre saperet at, no nec debet erant, quo dico incorrupte comprehensam ut. Et minimum consulatu ius, an dolores iracundia est, oportere vituperata interpretaris sea an. Sed id error quando indoctum, mel suas saperet at.                         
+                    </p>
+                </div>
+                <div className="col-md-3 text-center">                    
+                
+                </div>
+          </a>
+          <a href="#" className="list-group-item">
+                <div className="media col-md-3">
+
+                </div>
+                <div className="col-md-6">
+                    <h4 className="list-group-item-heading"> {this.getStar(3)} List group heading </h4>
+                    <p className="list-group-item-text"> Ut mea viris eripuit theophrastus, cu ponderum accusata consequuntur cum. Suas quaestio cotidieque pro ea. Nam nihil persecuti philosophia id, nam quot populo ea. 
+                        Falli urbanitas ei pri, eu est enim volumus, mei no volutpat periculis. Est errem iudicabit cu. At usu vocibus officiis, ad ius eros tibique appellantur.                         
+                    </p>
+                </div>
+                <div className="col-md-3 text-center">
+                    <div className="stars">
+                        <span className="glyphicon glyphicon-star"></span>
+                        <span className="glyphicon glyphicon-star"></span>
+                        <span className="glyphicon glyphicon-star"></span>
+                        <span className="glyphicon glyphicon-star"></span>
+                        <span className="glyphicon glyphicon-star-empty"></span>
+                    </div>
+                    
+                </div>
+          </a>
+        </div>
+        </div>
+	</div>
+</div>
             </div>
+            
         );
     }
 }
