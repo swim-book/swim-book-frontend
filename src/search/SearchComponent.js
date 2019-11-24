@@ -65,6 +65,12 @@ const defaultProps = {
     genderFilter: [
         {name:"남/여", key:"1"},
         {name:"여성만", key:"0"}
+    ],
+    priceFilter: [
+        {name:"전체", key:"999999999999"},
+        {name:"5만원 미만", key:"50000"},
+        {name:"10만원 미만", key:"100000"},
+        {name:"15만원 미만", key:"150000"}
     ]
 }
 
@@ -100,7 +106,8 @@ class SearchComponent extends React.Component {
                 "swim_type": this.state.selectedStyle,
                 "gender": this.state.selectedGender,
                 // "group_n": 1,
-                "lesson_date": this.state.selectedTime
+                "lesson_date": this.state.selectedTime,
+                "price": this.state.selectedPrice
             }
         }).then((res) => {
             console.log("res : " + JSON.stringify(res.data));
@@ -184,6 +191,7 @@ class SearchComponent extends React.Component {
                         <div className="col">{createSelector("selectedStyle", this.props.styleFilter, this.onChangeEvent('selectedStyle'))}</div>
                         <div className="col">{createSelector("selectedTime", this.props.timeFilter, this.onChangeEvent('selectedTime'))}</div>
                         <div className="col">{createSelector("selectedGender", this.props.genderFilter, this.onChangeEvent('selectedGender'))}</div>
+                        <div className="col">{createSelector("selectedPrice", this.props.priceFilter, this.onChangeEvent('selectedPrice'))}</div>
                         <button className="ml-3 btn btn-primary" onClick={this.onSearchClick}>검색하기</button>
                     </div>
                     <div className="flex-fill">
