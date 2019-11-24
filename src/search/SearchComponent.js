@@ -73,27 +73,24 @@ class SearchComponent extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            dataList: [],
-            selectedArea: this.props.areaFilter[0].key,
-            selectedStyle: this.props.styleFilter[0].key,
-            selectedTime: this.props.timeFilter[0].key,
-            selectedGender: this.props.genderFilter[0].key
-        }
-    }
-
-    componentDidMount() {
         const params = queryString.parse(this.props.location.search);
 
-        this.setState({
+        this.state = {
+            dataList: [],
             selectedArea: params.selectedArea,
             selectedStyle: params.selectedStyle,
             selectedTime: params.selectedTime,
             selectedGender: params.selectedGender
-        })
+        }
+    }
+
+    componentDidMount() {
+        this.requestApi();
     }
 
     requestApi = () => {
+        console.log("request api")
+        console.log("state : " + JSON.stringify(this.state));
         axios.get("http://15.164.94.43:3000/v1/teachers", {
             params: {
                 "swim_type": this.state.selectedStyle,
@@ -146,9 +143,14 @@ class SearchComponent extends React.Component {
     onChangeEvent = (key) => {
         return (event) => {
             var item = event.target.value
-            console.log("key : " + key + " value : " + item)
-            this.setState({ key: item.key })
+            var newState = {}
+            newState[key] = item
+            this.setState(newState)
         }
+    }
+
+    onSearchClick = () => {
+        this.requestApi();
     }
 
     render() {
@@ -158,10 +160,9 @@ class SearchComponent extends React.Component {
                     <option key={value.name} value={value.key}>{value.name}</option>
                 )
             }
-            console.log("id : " + id + " state : " + this.state[id])
             return (
                 <div className="input-group mb-3">
-                    <select className="custom-select" id={id} defaultValue="1" onChange={onChange} value={this.state[id]}>
+                    <select className="custom-select" id={id} onChange={onChange} value={this.state[id]}>
                         {items.map((item) => { return createOption(item) })}
                     </select>
                 </div>
@@ -179,6 +180,7 @@ class SearchComponent extends React.Component {
                         <div className="col">{createSelector("selectedStyle", this.props.styleFilter, this.onChangeEvent('selectedStyle'))}</div>
                         <div className="col">{createSelector("selectedTime", this.props.timeFilter, this.onChangeEvent('selectedTime'))}</div>
                         <div className="col">{createSelector("selectedGender", this.props.genderFilter, this.onChangeEvent('selectedGender'))}</div>
+                        <button className="btn btn-primary" onClick={this.onSearchClick}>검색하기</button>
                     </div>
                     <div className="flex-fill">
                         <div className="d-flex justify-content-end mb-3">
