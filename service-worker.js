@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/swim-book-frontend/precache-manifest.648f8be2cad7efcfa61bb46043d9cf0e.js"
+  "/swim-book-frontend/precache-manifest.035f7b595393b528e82b3be85678545a.js"
 );
 
 self.addEventListener('message', (event) => {
