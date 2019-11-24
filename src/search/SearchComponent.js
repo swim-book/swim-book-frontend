@@ -61,7 +61,7 @@ class SearchComponent extends React.Component {
     getContent = () => {
         return this.state.dataList.map((item) => {
             return (
-                <div key={item} className="card mb-3">
+                <div key={item.TeacherID} className="card mb-3">
                     <Link to={`/detail?teacherId=${item.TeacherID}`}>
                         <div className="row no-gutters">
                             <div className="">
